@@ -1,0 +1,10 @@
+.div {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr); /* Divide el contenedor en 3 filas iguales */
+    height: 300px;
+}
+
+.cuadro {
+    flex: 1; /* Distribuye el espacio disponible de manera uniforme */
+    border: 1px solid black; /* Añade un borde para separar los cuadros */
+}
