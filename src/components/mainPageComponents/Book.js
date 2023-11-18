@@ -6,12 +6,12 @@ import Navbar from '../../components/mainPageComponents/Navbar';
 
 function Book() {
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
-    cedula: '',
-    pais: '',
-    correo: '',
-    telefono: '',
+    name: '',
+    lastName: '',
+    idDoc: '',
+    country: '',
+    email: '',
+    phone: '',
   });
 
   const handleChange = (e) => {
@@ -21,12 +21,13 @@ function Book() {
 
   const actualizarDatos = async () => {
     try {
-      const response = await axios.put('URL_DE_TU_API', formData);
+      const response = await axios.post('http://localhost:8000/client', formData);
       if (response.status === 200) {
         console.log('Datos actualizados exitosamente.');
       }
     } catch (error) {
       console.error('Error al actualizar los datos:', error);
+      
     }
   };
 

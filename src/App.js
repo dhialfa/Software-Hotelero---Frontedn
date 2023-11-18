@@ -6,6 +6,7 @@ import Home from './components/mainPageComponents/Home';
 import Rooms from './components/mainPageComponents/Rooms';
 import AdminPage from './components/AdminPage';
 import AdminRooms from './components/adminPageComponents/AdminRooms';
+import ShowClients from './components/adminPageComponents/ShowClients';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='*' element={ <NotFound/> } />
           <Route path='/admin' element={ <AdminPage/> } />
           <Route path='/admin/rooms' element={ <AdminRooms/> } />
+          <Route path='/admin/showclients' element={ <ShowClients/> } />
         </Routes>
       </BrowserRouter>  
     </div>

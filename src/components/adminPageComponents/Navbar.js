@@ -17,13 +17,13 @@ export default function Navbar() {
               <NavLink to="/admin/rooms" className="nav-link">Habitaciones</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/rooms" className="nav-link">Clientes</NavLink>
+              <NavLink to="/admin/showclients" className="nav-link">Clientes</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/book" className="nav-link">Usuarios</NavLink>
+              <NavLink to="" className="nav-link">Usuarios</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/login" className="nav-link">Reservar</NavLink>
+              <NavLink to="" className="nav-link">Reservar</NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/" className="nav-link">Logout</NavLink>
