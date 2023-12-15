@@ -1,19 +1,27 @@
-import React, { useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import '../../css/CreateClient.css'; 
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import '../../css/CreateClient.css';
 import Navbar from '../../components/adminPageComponents/Navbar';
-import { createRoom } from '../api/rooms.api';
+import { updateRoom } from '../api/rooms.api';
 
-function CreateRoom() {
+function EditRoom() {
+  const location = useLocation();
+  const room = location.state ? location.state.room : null;
 
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     numRoom: '',
     name: '',
     numBeds: '',
     kindRoom: '',
   });
+
+  useEffect(() => {
+    // Utiliza el objeto de la habitación recibido para establecer el formulario
+    if (room) {
+      setFormData(room);
+    }
+  }, [room]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,28 +35,25 @@ function CreateRoom() {
     e.preventDefault();
 
     try {
-      const response = await createRoom(formData);
-      alert('Creado correctamente')
-      navigate('/admin/rooms')
+      await updateRoom(room.id, formData);
+      alert('Actualizado correctamente');
+      navigate('/admin/rooms');
     } catch (error) {
-      // Puedes manejar los errores aquí
-      console.error('Error al crear el cliente:', error);
-      alert('Cuarto ya existe');
+      console.error('Error al actualizar la habitación:', error);
+      alert('Error al actualizar la habitación');
     }
-    
   };
-  
+
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className='background'>
         <div className='formulario'>
           <div className="formulario-container">
-            <h2>Crear Habitacion</h2>
+            <h2>Editar Habitación</h2>
             <form onSubmit={handleSubmit}>
-  
               <div className="form-group">
-                <label htmlFor="numRoom">Habitacion:</label>
+                <label htmlFor="numRoom">Habitación:</label>
                 <input
                   type="text"
                   className="form-control"
@@ -91,7 +96,7 @@ function CreateRoom() {
                   onChange={handleChange}
                 />
               </div>
-              <button type="submit" className="btn btn-primary">Crear</button>
+              <button type="submit" className="btn btn-primary">Actualizar</button>
             </form>
           </div>
         </div>
@@ -100,4 +105,5 @@ function CreateRoom() {
   );
 }
 
-export default CreateRoom;
+export default EditRoom;
+

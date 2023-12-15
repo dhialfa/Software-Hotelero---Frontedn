@@ -1,0 +1,71 @@
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Estilos para el calendario */
+  .calendar-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2cm;
+  }
+  
+  /* Estilos para la tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilos para resaltar las fechas en el calendario */
+  .highlighted-date {
+    background-color: #6d6d6c; /* Color de resaltado, puedes cambiarlo */
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+  }
+  .custom-calendar {
+    background-color: #474747; /* Cambia este color al que desees */
+  }
+  .title-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .title-calendar h2 {
+    margin-bottom: 20px; /* Ajusta según sea necesario */
+  }
+  
+  .calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .custom-calendar {
+    max-width: 400px;
+    margin: 20px auto;
+  }
+  
+  .highlighted-date {
+    background-color: #f0f0f0; /* Cambia el color de fondo de las fechas resaltadas */
+    border-radius: 50%; /* Hace que el resaltado sea redondeado */
+  }
+  

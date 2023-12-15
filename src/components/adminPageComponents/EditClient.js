@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
-import '../../css/Book.css'; 
-import Navbar from '../../components/mainPageComponents/Navbar';
-import Footer from '../../components/mainPageComponents/Footer';
-import { createClient } from '../api/client.api';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import '../../css/CreateClient.css';
+import Navbar from '../../components/adminPageComponents/Navbar';
+import { updateClient } from '../api/client.api';
 
-function Book() {
+function EditClient() {
+  const location = useLocation();
+  const client = location.state ? location.state.client : null;
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     lastName: '',
@@ -13,6 +16,13 @@ function Book() {
     email: '',
     phone: '',
   });
+
+  useEffect(() => {
+    // Si hay un objeto de cliente, establecer el estado con la información del cliente
+    if (client) {
+      setFormData(client);
+    }
+  }, [client]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,29 +34,23 @@ function Book() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      // Lógica para enviar la solicitud POST a la API y crear un cliente
-      const response = await createClient(formData);
-
-      // Puedes manejar la respuesta según tus necesidades
-      console.log('Cliente creado con éxito:', response.data);
-      alert("En un momento lo llamara uno de nuestros colaboradores");
+      await updateClient(client.id, formData);
+      alert('Actualizado correctamente');
+      navigate('/admin/showclients');
     } catch (error) {
-      // Puedes manejar los errores aquí
-      console.error('Error al crear el cliente:', error);
-      alert(error.response.data.idDoc);
+      console.error('Error al actualizar el cliente:', error);
+      alert('Error al actualizar el cliente');
     }
-    
   };
-  
+
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <div className='background'>
         <div className='formulario'>
           <div className="formulario-container">
-            <h2>Formulario de Contacto</h2>
+            <h2>Actualizar Cliente</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Nombre:</label>
@@ -120,14 +124,13 @@ function Book() {
                 />
               </div>
 
-              <button type="submit" className="btn btn-primary">Enviar</button>
+              <button type="submit" className="btn btn-primary">Actualizar</button>
             </form>
           </div>
         </div>
       </div>
-      <Footer/>
     </div>
   );
 }
 
-export default Book;
+export default EditClient;

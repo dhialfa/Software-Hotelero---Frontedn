@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <NavLink to="/" className="nav-link">Main</NavLink>
+              <NavLink to="/admin/main" className="nav-link">Main</NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/admin/rooms" className="nav-link">Habitaciones</NavLink>
@@ -20,10 +20,10 @@ export default function Navbar() {
               <NavLink to="/admin/showclients" className="nav-link">Clientes</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="" className="nav-link">Usuarios</NavLink>
+              <NavLink to="/admin/showusers" className="nav-link">Usuarios</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="" className="nav-link">Reservar</NavLink>
+              <NavLink to="/admin/booking" className="nav-link">Reservar</NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="/" className="nav-link">Logout</NavLink>
